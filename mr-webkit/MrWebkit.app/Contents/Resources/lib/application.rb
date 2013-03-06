@@ -3,6 +3,8 @@ require 'hotcocoa'
 
 framework 'WebKit'
 
+HOME_PATH = File.join(NSBundle.mainBundle.resourcePath.fileSystemRepresentation, 'index.html')
+
 class MrWebkit
   include HotCocoa
 
@@ -10,7 +12,8 @@ class MrWebkit
     application name: 'MrWebkit' do |app|
       app.delegate = self
       window frame: [100, 100, 500, 500], title: 'MrWebkit' do |win|
-        win << label(text: 'Hello from HotCocoa', layout: {start: false})
+        #win << label(text: 'Hello from HotCocoa', layout: {start: false})
+        win << web_view(layout: { expand: [:width, :height] }, url: NSURL.alloc.initFileURLWithPath(HOME_PATH))
         win.will_close { exit }
       end
     end
