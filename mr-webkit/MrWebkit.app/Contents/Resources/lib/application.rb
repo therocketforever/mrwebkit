@@ -1,5 +1,6 @@
 require 'rubygems' # disable this for a deployed application
 require 'hotcocoa'
+require 'webkit'
 
 class MrWebkit
   include HotCocoa
